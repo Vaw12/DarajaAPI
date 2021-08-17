@@ -22,7 +22,7 @@
 
             axios.post('/get-token', {})
             .then((response) => {
-                console.log(response.data);
+                console.log(response);
                 document.getElementById('access_token').innerHTML = response.data.access_token
             })
             .catch((error) => {
