@@ -8,8 +8,9 @@
                 <div class="card-header">
                     Obtain Access Token
                 </div>
-                <h4 id="access_token"></h4>
+                
                 <div class="card-body">
+                    <h4 id="access_token"></h4>
                     <button id="getAccessToken" class="btn btn-primary">Request Access Token</button>
                 </div>
             </div>

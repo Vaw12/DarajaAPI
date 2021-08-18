@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/v1/daraja/token', [MpesaController::class, 'getAccessToken']);
 Route::post('/v1/daraja/stk', [MpesaController::class, 'stkPush']);
+Route::post('/v1/daraja/validation', [MpesaController::class, 'mpesaValidation']);
+Route::post('/v1/daraja/transaction/confirmation', [MpesaController::class, 'mpesaConfirmation']);
