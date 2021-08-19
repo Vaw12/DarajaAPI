@@ -162,4 +162,27 @@ class MpesaController extends Controller
 
         return $response;
     }
+
+    public function mpesaRegisterUrls(){
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Content-Type:application/json', 
+            'Authorization: Bearer '.
+            $this->generateAccessToken()
+        ));
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
+            'ShortCode' => '600141',
+            'ResponseType' => 'Completed',
+            'ConfirmationURL' => env('NGROK_DOMAIN'). '/v1/daraja/transaction/confirmation',
+            'ValidationURL' => env('NGROK_DOMAIN'). '/v1/daraja/validation'
+        )));
+
+        $curl_response = curl_exec($curl);
+        curl_close($curl);
+        return $curl_response;
+    }
 }
